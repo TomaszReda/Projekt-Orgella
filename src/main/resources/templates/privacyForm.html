@@ -35,6 +35,8 @@ and open the template in the editor.
         <div id="navbar" class="navbar-collapse collapse">
             <div th:if="${user}!='anonymousUser'">
                 <form class="form-inline navbar-form navbar-right"   th:action="@{/logmeout}" action="#" method="post">
+                    <label th:if="${user!='anonymousUser'}" th:text="${user}"></label>
+                    <label class="text-danger" th:if="${user!='anonymousUser'}" th:text="${user}"></label>
                     <button  type="submit" class="btn btn-success">wyloguj</button>
                 </form>
             </div>
@@ -57,13 +59,16 @@ and open the template in the editor.
             </div>
 
             <form class="form-inline"  action="#" method="POST">
-                <div class="form-group">
-                    <input type="text" name="wyszukiwanie" placeholder="Szukaj..." class="form-control" />
-                    <button type="submit" class="btn btn-success">Szukaj</button>
+                <div class="navbar-brand">
+                    <div class="form-group">
+                        <input type="text" name="wyszukiwanie" placeholder="Szukaj..." class="form-control" />
+                        <button type="submit" class="btn btn-success">Szukaj</button>
+                    </div>
                 </div>
+                <a class="navbar-brand"  th:if="${admin}" th:href="@{/admins}" >Panel Administratora</a>
+                <a class="navbar-brand"  th:if="${admin}"  th:href="@{/add}" >Dodaj Produkt</a>
             </form>
-            <a class="navbar-brand"  th:if="${admin}" th:href="@{/admins}" >Panel Administratora</a>
-            <a class="navbar-brand"  th:if="${admin}"  th:href="@{/add}" >Dodaj Produkt</a>
+
         </div><!--/.navbar-collapse -->
     </div>
 </nav>

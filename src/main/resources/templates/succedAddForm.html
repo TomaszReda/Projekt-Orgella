@@ -33,43 +33,51 @@ and open the template in the editor.
             <a class="navbar-brand" th:href="@{/}">Orgella</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+            <div th:if="${user}!='anonymousUser'">
+                <form class="form-inline navbar-form navbar-right"   th:action="@{/logmeout}" action="#" method="post">
+                    <label class="text-danger" th:if="${user!='anonymousUser'}" th:text="${user}"></label>
+                    <button  type="submit" class="btn btn-success">wyloguj</button>
+                </form>
+            </div>
+            <div th:if="${user}=='anonymousUser'">
+                <form class="form-inline navbar-form navbar-right" th:action="@{/processinglogin}" action="processinglogin" method="post" >
+                    <div class="form-group">
+                        <input type="text"  name="user" placeholder="Login" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="pass" placeholder="Hasło" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-success">Zaloguj się</button>
+                </form>
+            </div>
+            <div th:if="${user}=='anonymousUser'">
+                <form class="form-inline navbar-form navbar-right" th:action="@{/register}" action="#" method="get" >
 
-            <form class="form-inline navbar-form navbar-right" th:action="@{/processinglogin}" action="#" method="post" >
-                <div class="form-group">
-                    <input type="text"  name="user" placeholder="Login" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="password" name="pass" placeholder="Hasło" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-success">Zaloguj się</button>
-            </form>
-            <form class="form-inline navbar-form navbar-right" th:action="@{/register}" action="#" method="get" >
+                    <button type="submit" class="btn btn-success">Zarejestruj się</button>
+                </form>
 
-                <button type="submit" class="btn btn-success">Zarejestruj się</button>
-            </form>
+            </div>
 
             <form class="form-inline"  action="#" method="POST">
-                <div class="form-group">
-                    <input type="text" name="wyszukiwanie" placeholder="Szukaj..." class="form-control" />
-                    <button type="submit" class="btn btn-success">Szukaj</button>
+                <div class="navbar-brand">
+                    <div class="form-group">
+                        <input type="text" name="wyszukiwanie" placeholder="Szukaj..." class="form-control" />
+                        <button type="submit" class="btn btn-success">Szukaj</button>
+                    </div>
                 </div>
+                <a class="navbar-brand"  th:if="${admin}" th:href="@{/admins}" >Panel Administratora</a>
+                <a class="navbar-brand"  th:if="${admin}"  th:href="@{/add}" >Dodaj Produkt</a>
             </form>
 
-            <a class="navbar-brand"  th:if="${admin}" th:href="@{/admins}" >Panel Administratora</a>
-            <a class="navbar-brand"  th:if="${admin}"  th:href="@{/add}" >Dodaj Produkt</a>
+
+
         </div><!--/.navbar-collapse -->
     </div>
+
 </nav>
 
-<div class="row">
-    <div class="kategoria col-md-2">kategoria 1</div>
-    <div class="kategoria col-md-2">kategoria 2</div>
-    <div class="kategoria col-md-2">kategoria 3</div>
-    <div class="kategoria col-md-2">kategoria 4</div>
-    <div class="kategoria col-md-2">kategoria 5</div>
-    <div class="kategoria col-md-2">kategoria 6</div>
 
-</div>
+
 
 <hr>
 <br/><br/><br/>

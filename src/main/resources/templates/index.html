@@ -35,6 +35,7 @@ and open the template in the editor.
                 <div id="navbar" class="navbar-collapse collapse">
                     <div th:if="${user}!='anonymousUser'">
                     <form class="form-inline navbar-form navbar-right"   th:action="@{/logmeout}" action="#" method="post">
+                        <label class="text-danger" th:if="${user!='anonymousUser'}" th:text="${user}"></label>
                     <button  type="submit" class="btn btn-success">wyloguj</button>
                     </form>
                        </div>
@@ -54,36 +55,43 @@ and open the template in the editor.
 
                         <button type="submit" class="btn btn-success">Zarejestruj się</button>
                     </form>
+
                 </div>
 
                     <form class="form-inline"  action="#" method="POST">
+                        <div class="navbar-brand">
                         <div class="form-group">
                             <input type="text" name="wyszukiwanie" placeholder="Szukaj..." class="form-control" />
                             <button type="submit" class="btn btn-success">Szukaj</button>
                         </div>
+                        </div>
+                        <a class="navbar-brand"  th:if="${admin}" th:href="@{/admins}" >Panel Administratora</a>
+                        <a class="navbar-brand"  th:if="${admin}"  th:href="@{/add}" >Dodaj Produkt</a>
                     </form>
-                    <a class="navbar-brand"  th:if="${admin}" th:href="@{/admins}" >Panel Administratora</a>
-                    <a class="navbar-brand"  th:if="${admin}"  th:href="@{/add}" >Dodaj Produkt</a>
+
+
+
                 </div><!--/.navbar-collapse -->
             </div>
+
         </nav>
-
-
         <div class="row">
-            <div class="kategoria col-md-2">kategoria 1</div>
-            <div class="kategoria col-md-2">kategoria 2</div>
-            <div class="kategoria col-md-2">kategoria 3</div>
-            <div class="kategoria col-md-2">kategoria 4</div>
-            <div class="kategoria col-md-2">kategoria 5</div>
-            <div class="kategoria col-md-2">kategoria 6</div>
+            <div class="kategoria col-md-2">Laptopy</div>
+            <div class="kategoria col-md-2">Telefony</div>
+            <div class="kategoria col-md-2">Tablety</div>
+            <div class="kategoria col-md-2">Podzespoły komputerowe</div>
+            <div class="kategoria col-md-2">Gry</div>
+            <div class="kategoria col-md-2">Oprogramowanie</div>
 
         </div>
+
+
 
         <hr>
 
         <div class="jumbotron">
             <div class="slider">
-                <br/>to wrzuci się jakieś przewijające się obrazki<br/><br/>
+                <br/>to wrzuci  się jakieś przewijające się obrazki<br/><br/>
             </div>
         </div>
 
