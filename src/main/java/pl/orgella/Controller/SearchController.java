@@ -85,7 +85,7 @@ public class SearchController {
 
         String word2=word.toUpperCase();
 
-        List<String> list = Arrays.asList(word.split(" "));
+        List<String> list = Arrays.asList(word2.split(" "));
         List<Product> allProducts = new ArrayList<>();
 
 
@@ -96,22 +96,24 @@ public class SearchController {
 
         List<Product> searchProducts = new ArrayList<>();
         if(!word.equals("")) {
-            for (Product p : allProducts) {
-                String header = p.getHeader();
+            for (Product pp : allProducts) {
+                String header = pp.getHeader();
                 header = header.toUpperCase();
                 List<String> headerList = Arrays.asList(header.split(" "));
                 for (String s : headerList) {
                     if (list.contains(s)) {
-                        searchProducts.add(p);
+                        searchProducts.add(pp);
                         break;
                     }
                 }
             }
         }
+
+
         else {
             searchProducts=allProducts;
         }
-
+        System.err.println("search"+searchProducts);
 
 
 
