@@ -58,10 +58,10 @@ and open the template in the editor.
 
                 </div>
 
-                    <form class="form-inline"  action="#" method="POST">
+                    <form class="form-inline"  action="#" th:action="@{/searchh}" method="GET">
                         <div class="navbar-brand">
                         <div class="form-group">
-                            <input type="text" name="wyszukiwanie" placeholder="Szukaj..." class="form-control" />
+                            <input type="text" name="word" placeholder="Szukaj..." class="form-control" />
                             <button type="submit" class="btn btn-success">Szukaj</button>
                         </div>
                         </div>
@@ -76,12 +76,12 @@ and open the template in the editor.
 
         </nav>
         <div class="row">
-            <div class="kategoria col-md-2">Laptopy</div>
-            <div class="kategoria col-md-2">Telefony</div>
-            <div class="kategoria col-md-2">Tablety</div>
-            <div class="kategoria col-md-2">Podzespoły komputerowe</div>
-            <div class="kategoria col-md-2">Gry</div>
-            <div class="kategoria col-md-2">Oprogramowanie</div>
+           <a th:href="@{/search?kategoria=Laptopy}"> <div class="kategoria col-md-2" >Laptopy</div></a>
+            <a th:href="@{/search?kategoria=Telefony}"> <div class="kategoria col-md-2" >Telefony</div></a>
+            <a th:href="@{/search?kategoria=Tablety}"> <div class="kategoria col-md-2">Tablety</div></a>
+            <a th:href="@{/search?kategoria=Podzespoły_komputerowe}"> <div class="kategoria col-md-2">Podzespoły komputerowe</div></a>
+            <a th:href="@{/search?kategoria=Gry}"> <div class="kategoria col-md-2">Gry</div></a>
+            <a th:href="@{/search?kategoria=Oprogramowanie}"> <div class="kategoria col-md-2">Oprogramowanie</div></a>
 
         </div>
 

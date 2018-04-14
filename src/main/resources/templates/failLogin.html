@@ -39,10 +39,12 @@ and open the template in the editor.
                 <button type="submit" class="btn btn-success">Zarejestruj się</button>
             </form>
 
-            <form class="form-inline"  action="#" method="POST">
-                <div class="form-group">
-                    <input type="text" name="wyszukiwanie" placeholder="Szukaj..." class="form-control" />
-                    <button type="submit" class="btn btn-success">Szukaj</button>
+            <form class="form-inline"  action="#" th:action="@{/searchh}" method="GET">
+                <div class="navbar-brand">
+                    <div class="form-group">
+                        <input type="text" name="word" placeholder="Szukaj..." class="form-control" />
+                        <button type="submit" class="btn btn-success">Szukaj</button>
+                    </div>
                 </div>
             </form>
 

@@ -101,7 +101,7 @@ public class AddController {
                     extend = extend.substring(extend.indexOf('.'));
 
                     UUID uuid = UUID.randomUUID();
-                    String filename = "src\\main\\resources\\static\\images\\products\\" + uuid.toString() + extend;
+                    String filename = "src\\main\\resources\\static\\images\\" + uuid.toString() + extend;
                     byte[] bytes = file[i].getBytes();
                     File files = new File(filename);
 
@@ -110,7 +110,7 @@ public class AddController {
                     bufferedOutputStream.write(bytes);
                     bufferedOutputStream.close();
                     Zdjecia zdjecia = new Zdjecia();
-                    zdjecia.setAdres("images/products/" + uuid.toString() + extend);
+                    zdjecia.setAdres("images/" + uuid.toString() + extend);
                     product.getZdjeciaSet().add(zdjecia);
 
 

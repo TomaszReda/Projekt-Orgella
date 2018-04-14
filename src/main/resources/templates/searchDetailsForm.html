@@ -12,6 +12,9 @@ and open the template in the editor.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/newcss.css" rel="stylesheet" type="text/css"/>
     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/lightbox.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/skeleton.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  crossorigin="anonymous" />
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
@@ -75,19 +78,65 @@ and open the template in the editor.
     </div>
 
 </nav>
+<div class="row">
+
+    <div>
+        <div class="col-lg-8">
+            <h3 th:text="${product.header}">Naglowek</h3>
+            <br />
+
+            <table th:object="${product}" class="table table-bordered table-hover table-inverse">
+
+                <thead>
+
+                </thead>
+                <tbody>
+                <tr>
+                    <th>Naglowek</th><td th:text="*{header}"></td>
+                </tr>
+
+                <tr>
+                    <th>kategoria</th><td th:text="*{kategoria}"></td>
+                </tr>
+                <tr>
+                    <th>Cena</th><td th:text="*{cena}"></td>
+                </tr>
+                <tr>
+                    <th>Opis</th><td th:text="*{opis}"></td>
+                </tr>
+                <tr >
+                    <td colspan="2"><a th:href="@{/buy(ID=*{ID})}">Kup</a> </td>
+                </tr>
+
+
+                </tbody>
+            </table>
 
 
 
+            <h1 th:if="${!zdjecia.isEmpty()}"> Galeria</h1>
 
-<hr>
-<br/><br/><br/>
-<div id="sukces">
-    <div class="alert alert-success">
-        <a th:href="@{/add}">Dodałeś produkt ! Podaj nownie drugi</a>
-    </div>
+
+
+            <div class="container">
+                <div class="row">
+                    <div th:each="z: ${zdjecia}">
+                        <div class="col-md-4" >
+                            <div class="thumbnail">
+                                <a  th:href="${z}" data-lightbox="example-1"> <img  th:src="${z}" alt="Zdjecie się łąduje" style="width:100%" /></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
 </div>
-<br/><br/><br/><br/><br/><br/>
-<hr>
+
+
+
+
 
 <footer>
     <div class="row">
@@ -113,7 +162,7 @@ and open the template in the editor.
 
 
 
-
+        <script src="js/lightbox.js"></script>
 <script>
     (function (b, o, i, l, e, r) {
         b.GoogleAnalyticsObject = l;

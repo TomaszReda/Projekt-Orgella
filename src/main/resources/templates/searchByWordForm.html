@@ -75,19 +75,32 @@ and open the template in the editor.
     </div>
 
 </nav>
+<div class="row">
+    <a th:href="@{/search?kategoria=Laptopy}"> <div class="kategoria col-md-2" >Laptopy</div></a>
+    <a th:href="@{/search?kategoria=Telefony}"> <div class="kategoria col-md-2" >Telefony</div></a>
+    <a th:href="@{/search?kategoria=Tablety}"> <div class="kategoria col-md-2">Tablety</div></a>
+    <a th:href="@{/search?kategoria=Podzespoły_komputerowe}"> <div class="kategoria col-md-2">Podzespoły komputerowe</div></a>
+    <a th:href="@{/search?kategoria=Gry}"> <div class="kategoria col-md-2">Gry</div></a>
+    <a th:href="@{/search?kategoria=Oprogramowanie}"> <div class="kategoria col-md-2">Oprogramowanie</div></a>
 
-
-
-
-<hr>
-<br/><br/><br/>
-<div id="sukces">
-    <div class="alert alert-success">
-        <a th:href="@{/add}">Dodałeś produkt ! Podaj nownie drugi</a>
-    </div>
 </div>
-<br/><br/><br/><br/><br/><br/>
-<hr>
+<br/>
+<br/>
+<ul th:each="n: ${products}" th:object="${n}" class="list-group" >
+    <li class="list-group-item" >
+
+        <a  th:href="@{/detailsSearch(ID=*{ID})}">
+            <img th:if="*{zdjeciaSet.isEmpty()}" width="8%" height="8%" src="images/Brak_zdjęcia.jpg"  alt="Brak zdjecia"  />
+            <img th:unless="*{zdjeciaSet.isEmpty()}" width="8%" height="8%" th:src="*{zdjeciaSet.get(0).getAdres()}"  alt="Błąd" />
+        </a>
+        <a  th:href="@{/detailsSearch(ID=*{ID})}" th:text="*{header}" > </a> <span th:text="*{cena}+' zł'" class="badge">12</span> </li>
+
+</ul>
+<a  th:each="i: ${ile}" th:text="${i}+1" th:href="@{/searchh(page=${i},word=${word})}"></a>
+
+
+
+
 
 <footer>
     <div class="row">
@@ -110,6 +123,7 @@ and open the template in the editor.
         </div>
     </div>
 </footer>
+
 
 
 
