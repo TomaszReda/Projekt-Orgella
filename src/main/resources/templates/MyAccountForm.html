@@ -55,7 +55,6 @@ and open the template in the editor.
 
                     <button type="submit" class="btn btn-success">Zarejestruj się</button>
                 </form>
-
             </div>
 
             <form class="form-inline"  action="#" th:action="@{/searchh}" method="GET">
@@ -69,26 +68,47 @@ and open the template in the editor.
                 <a class="navbar-brand"  th:unless="${user}=='anonymousUser'" th:href="@{/account}" >Moje konto </a>
                 <a class="navbar-brand"  th:if="${admin}"  th:href="@{/add}" >Dodaj Produkt</a>
             </form>
-
-
-
         </div><!--/.navbar-collapse -->
     </div>
-
 </nav>
 
+    <div class="formularz">
+
+        <p class="text-success"  th:if="${succes}" th:text="${succes}">Plik musi byc obrazkiem</p>
+        <h3>Zmien hasło</h3>
+        <form action="deleteProducts" method="post"  th:action="@{/changePassword}" >
+            <div class="form-group">
+                <p class="text-danger"  th:if="${badOld}" th:text="${badOld}">Plik musi byc obrazkiem</p>
+                <label> Stare hasło:</label> <br/>
+                <input type="password" name="oldPassword" />
+            </div>
 
 
+            <div class="form-group"> <p class="text-danger"  th:if="${badLength}" th:text="${badLength}"> </p>
+                <label> Nowe hasło:</label><br/>
+            <input type="password" name="newPassword1" />
+            </div>
 
-<hr>
-<br/><br/><br/>
-<div id="sukces">
-    <div class="alert alert-success">
-        <a th:href="@{/add}">Dodałeś produkt ! Podaj nownie drugi</a>
+
+            <div class="form-group">
+                <p class="text-danger"  th:if="${NotTheSame}" th:text="${NotTheSame}">Plik musi byc obrazkiem</p>
+
+                <label> Powtorz hasło:</label><br/>
+            <input type="password" name="newPassword2" />
+
+
+            </div>
+            <br/><br/>
+            <button type="submit" class="btn btn-lg btn-block btn-success">Zmien hasło</button>
+        </form>
+
     </div>
 </div>
-<br/><br/><br/><br/><br/><br/>
-<hr>
+
+
+
+
+
 
 <footer>
     <div class="row">
@@ -111,6 +131,7 @@ and open the template in the editor.
         </div>
     </div>
 </footer>
+
 
 
 

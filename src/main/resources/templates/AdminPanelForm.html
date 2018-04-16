@@ -65,6 +65,7 @@ and open the template in the editor.
                     </div>
                 </div>
                 <a class="navbar-brand"  th:if="${admin}" th:href="@{/admins}" >Panel Administratora</a>
+                <a class="navbar-brand"  th:unless="${user}=='anonymousUser'" th:href="@{/account}" >Moje konto </a>
                 <a class="navbar-brand"  th:if="${admin}"  th:href="@{/add}" >Dodaj Produkt</a>
             </form>
         </div><!--/.navbar-collapse -->
@@ -79,7 +80,7 @@ and open the template in the editor.
         <select name="products" >
             <option th:each="p: ${products}"  th:text="${p.header}" th:value="${p.ID}">Volvo</option>
         </select>
-        <br />
+        <br/><br/>
         <button type="submit" class="btn btn-lg btn-block btn-success">Usun produkt</button>
     </form>
 
@@ -93,7 +94,7 @@ and open the template in the editor.
         <select name="user" >
             <option th:each="u: ${users}"  th:text="${u.login}" th:value="${u.ID}">Volvo</option>
         </select>
-        <br />
+        <br /><br/>
         <button type="submit" class="btn btn-lg btn-block btn-success">Usun produkt</button>
     </form>
 </div>
