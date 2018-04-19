@@ -19,8 +19,7 @@ public class UserDetails implements UserDetailsService {
 
     private UserRepository userRepository;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+
 
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
@@ -32,7 +31,7 @@ public class UserDetails implements UserDetailsService {
         User user=userRepository.findFirstByLogin(s);
         org.springframework.security.core.userdetails.User user1=new org.springframework.security.core.userdetails.User(
                 user.getLogin(),
-               passwordEncoder.encode(user.getPassword()) ,
+               user.getPassword(),
                 convert(user.getUserRole())
         );
         return user1;

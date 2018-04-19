@@ -2,6 +2,9 @@ package pl.orgella.Controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +24,14 @@ public class RegisterController {
     private UserService userService;
 
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+
+
+
+
 
     @Autowired
     public void setUserService(UserService userService) {
@@ -66,7 +77,12 @@ public class RegisterController {
             model.addAttribute("regulamin","Musisz zaakceptowac regulamin");
             return "zalozkonto";
         }
-
+        if(user.getPassword().length()>15)
+        {
+            model.addAttribute("badLength","Hasło musi miec min 9 a max 15 znaków");
+            return "zalozkonto";
+        }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userService.addwithDefaultRole(user);
 
         return "redirect:succes";

@@ -22,9 +22,9 @@ public class User {
     private String lastname;
     @Email
     private String email;
-    @Length(min=6,max=12,message = "{pl.orgella.model.User.min.6-12.message}")
+    @Length(min=6,max=15,message = "{pl.orgella.model.User.min.6-12.message}")
     private String login;
-    @Length(min = 9,max = 15,message = "{pl.orgella.model.User.min.9-15.message}")
+    @Length(min = 9,max = 60,message = "{pl.orgella.model.User.min.9-15.message}")
     private String password ;
 
     @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)

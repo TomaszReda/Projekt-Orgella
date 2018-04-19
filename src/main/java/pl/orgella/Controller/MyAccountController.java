@@ -5,6 +5,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,9 @@ import java.util.Collection;
 public class MyAccountController {
 
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
@@ -45,6 +50,10 @@ public class MyAccountController {
     @PostMapping("/changePassword")
     public String change(Model model, @RequestParam String oldPassword,@RequestParam String newPassword1,@RequestParam String newPassword2)
     {
+
+
+
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
         model.addAttribute("user",name);
@@ -54,9 +63,12 @@ public class MyAccountController {
         {
             model.addAttribute("admin","admin");
         }
-
         User user=userRepository.findFirstByLogin(name);
-        if(!oldPassword.equals(user.getPassword()))
+
+
+
+
+        if(!BCrypt.hashpw(oldPassword,user.getPassword()).equals(user.getPassword()))
         {
             model.addAttribute("badOld","Złe hasło");
             return "MyAccountForm";
@@ -72,7 +84,7 @@ public class MyAccountController {
             return "MyAccountForm";
         }
 
-        user.setPassword(newPassword1);
+        user.setPassword(passwordEncoder.encode(newPassword1));
         userRepository.save(user);
         model.addAttribute("succes","Pomyslnie zmieniono hasło");
         return "MyAccountForm";

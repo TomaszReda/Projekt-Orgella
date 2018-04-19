@@ -96,7 +96,7 @@ and open the template in the editor.
                     <input id="formularz-email" type="email" th:field="*{email}" placeholder="Email" class="form-control">
                 </div>
 
-                    <p class="alert alert-danger" th:errors="*{password}" >Błędne dane!</p>
+                    <p class="alert alert-danger" th:if="${badLength}" th:text="${badLength}" >Błędne dane!</p>
 
                 <div class="form-group">
                     <label for="formularz-haslo">Hasło:</label>
