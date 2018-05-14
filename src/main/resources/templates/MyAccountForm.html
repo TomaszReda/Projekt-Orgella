@@ -36,7 +36,7 @@ and open the template in the editor.
             <div th:if="${user}!='anonymousUser'">
                 <form class="form-inline navbar-form navbar-right"   th:action="@{/logmeout}" action="#" method="post">
                     <label class="text-danger" th:if="${user!='anonymousUser'}" th:text="${user}"></label>
-                    <button  type="submit" class="btn btn-success">wyloguj</button>
+                    <button  type="submit" class="btn btn-success">Wyloguj</button>
                 </form>
             </div>
             <div th:if="${user}=='anonymousUser'">
@@ -74,11 +74,11 @@ and open the template in the editor.
 
     <div class="formularz">
 
-        <p class="text-success"  th:if="${succes}" th:text="${succes}">Plik musi byc obrazkiem</p>
+        <p class="text-success"  th:if="${succes}" th:text="${succes}">Plik musi być obrazkiem!</p>
         <h3>Zmien hasło</h3>
         <form action="deleteProducts" method="post"  th:action="@{/changePassword}" >
             <div class="form-group">
-                <p class="text-danger"  th:if="${badOld}" th:text="${badOld}">Plik musi byc obrazkiem</p>
+                <p class="text-danger"  th:if="${badOld}" th:text="${badOld}">Plik musi być obrazkiem!</p>
                 <label> Stare hasło:</label> <br/>
                 <input type="password" name="oldPassword" />
             </div>
@@ -91,7 +91,7 @@ and open the template in the editor.
 
 
             <div class="form-group">
-                <p class="text-danger"  th:if="${NotTheSame}" th:text="${NotTheSame}">Plik musi byc obrazkiem</p>
+                <p class="text-danger"  th:if="${NotTheSame}" th:text="${NotTheSame}">Plik musi być obrazkiem!</p>
 
                 <label> Powtorz hasło:</label><br/>
             <input type="password" name="newPassword2" />
