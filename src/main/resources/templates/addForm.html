@@ -36,7 +36,7 @@ and open the template in the editor.
             <div th:if="${user}!='anonymousUser'">
                 <form class="form-inline navbar-form navbar-right"   th:action="@{/logmeout}" action="#" method="post">
                     <label class="text-danger" th:if="${user!='anonymousUser'}" th:text="${user}"></label>
-                    <button  type="submit" class="btn btn-success">wyloguj</button>
+                    <button  type="submit" class="btn btn-success">Wyloguj</button>
                 </form>
             </div>
             <div th:if="${user}=='anonymousUser'">
@@ -76,8 +76,8 @@ and open the template in the editor.
 
     <form action="/add" method="post" enctype="multipart/form-data" th:action="@{/add}" th:object="${product}">
         <h3>Dodaj Product</h3>
-        <p class="text-danger"  th:if="${badExtend}" th:text="${badExtend}">Plik musi byc obrazkiem</p>
-        <p class="text-danger"  th:if="${limit}" th:text="${limit}">Mozna dodac maks 9 zdjec</p>
+        <p class="text-danger"  th:if="${badExtend}" th:text="${badExtend}">Plik musi być obrazkiem!</p>
+        <p class="text-danger"  th:if="${limit}" th:text="${limit}">Można dodać maksymalnie 9 zdjeć!</p>
         <div class="form-group">
             <label> Zdjecia:</label>
             <input type="file" name="plik[]"  multiple="multiple" />
@@ -86,7 +86,7 @@ and open the template in the editor.
         <p  class="alert alert-danger" th:errors="*{header}" >Błędne dane!</p>
         <div class="form-group">
             <label >Nagłowek:</label>
-            <input type="text" placeholder="Naglowek"  th:field="*{header}" class="form-control">
+            <input type="text" placeholder="Naglówek"  th:field="*{header}" class="form-control">
         </div>
 
 
